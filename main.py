@@ -4,6 +4,7 @@ from player import *
 from asteroid import Asteroid
 from asteroidfield import *
 import sys
+from shot import Shot
 
 def main():
     pygame.init()
@@ -16,10 +17,11 @@ def main():
     updatable_grp = pygame.sprite.Group() # create empty group to put all the objects that can be updated
     drawable_grp = pygame.sprite.Group() # create empty group to put all objects that can be drawn
     asteroids_grp = pygame.sprite.Group() #create empty group for the asteroids
-        
+    shot_grp = pygame.sprite.Group() # empty group for shots
+
     Asteroid.containers = (asteroids_grp , updatable_grp, drawable_grp)
     AsteroidField.containers = (updatable_grp)
-
+    Shot.containers = (shot_grp, updatable_grp, drawable_grp)
         # added a class variable to put all Player instances in both groups
     Player.containers = (updatable_grp, drawable_grp)
         # create player object after creating class variable (to make sure it is added/ has variable)
