@@ -3,7 +3,7 @@ from constants import *
 from player import *
 from asteroid import Asteroid
 from asteroidfield import *
-
+import sys
 
 def main():
     pygame.init()
@@ -33,6 +33,10 @@ def main():
        
         for updatable in updatable_grp: #iterate through all objects in update group
             updatable.update(dt)
+        for asteroid in asteroids_grp:
+            if player1.check_collision(asteroid):
+                sys.exit("Game over!")
+
 
         screen.fill("black")
         for drawable in drawable_grp: #iterate throuh all objects in drawable group
