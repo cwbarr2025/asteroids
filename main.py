@@ -38,10 +38,10 @@ def main():
         for asteroid in asteroids_grp:
             if player1.check_collision(asteroid):
                 sys.exit("Game over!")
-        for asteroid in asteroids_grp:
-            for shot in shot_grp:
+        for asteroid in asteroids_grp: #iterate through each asteroid in asteroid group
+            for shot in shot_grp: # iterate through each shot in shot gorup
                 if shot.check_collision(asteroid):
-                    asteroid.kill()
+                    asteroid.split() # use built in pygame kill() method to delete object from game
                     shot.kill()
 
 
@@ -49,7 +49,7 @@ def main():
         for drawable in drawable_grp: #iterate throuh all objects in drawable group
             drawable.draw(screen)
 
-        pygame.display.flip()
+        pygame.display.flip() # built in method for pygame that flips screen to face player once everything is drawn
         clock.tick(60) # set framerate to 60 fps
         dt = clock.tick(60) / 1000
         
